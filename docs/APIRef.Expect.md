@@ -6,6 +6,7 @@ Expect verifies if a certain value is as expected to be.
 
 ### Methods
 
+- [`.toBeVisibleMinPercent()`](#tobevisibleminpercent)
 - [`.toBeVisible()`](#tobevisible)
 - [`.toBeNotVisible()`](#tobenotvisible)
 - [`.toExist()`](#toexist)
@@ -15,6 +16,15 @@ Expect verifies if a certain value is as expected to be.
 - [`.toHaveId()`](#tohaveidid)
 - [`.toHaveValue()`](#tohavevaluevalue)
 
+
+
+### `toBeVisibleMinPercent()`
+Expect the view to be visible for at least X%.
+Allowed values in range [0, 1]
+
+```js
+await expect(element(by.id('visible30%'))).toBeVisibleMinPercent(0.3);
+```
 
 ### `toBeVisible()`
 Expect the view to be at least 75% visible.

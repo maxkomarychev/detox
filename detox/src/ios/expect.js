@@ -6,6 +6,7 @@ const IdMatcher = matchers.IdMatcher;
 const TypeMatcher = matchers.TypeMatcher;
 const TraitsMatcher = matchers.TraitsMatcher;
 const VisibleMatcher = matchers.VisibleMatcher;
+const VisibleMinPercentMatcher = matchers.VisibleMinPercentMatcher;
 const NotVisibleMatcher = matchers.NotVisibleMatcher;
 const ExistsMatcher = matchers.ExistsMatcher;
 const NotExistsMatcher = matchers.NotExistsMatcher;
@@ -359,6 +360,9 @@ class ExpectElement extends Expect {
     super(invocationManager);
     this._element = element;
   }
+  async toBeVisibleMinPercent(percentage) {
+    return await new MatcherAssertionInteraction(this._invocationManager, this._element, new VisibleMinPercentMatcher(percentage)).execute();
+  }
   async toBeVisible() {
     return await new MatcherAssertionInteraction(this._invocationManager, this._element, new VisibleMatcher()).execute();
   }
@@ -396,6 +400,9 @@ class WaitForElement extends WaitFor {
     super(invocationManager);
     //if ((!element instanceof Element)) throw new Error(`WaitForElement ctor argument must be a valid Element, got ${typeof element}`);
     this._element = element;
+  }
+  toBeVisibleMinPercent(percentage) {
+    return new WaitForInteraction(this._invocationManager, this._element, new VisibleMinPercentMatcher(percentage));
   }
   toBeVisible() {
     return new WaitForInteraction(this._invocationManager, this._element, new VisibleMatcher());

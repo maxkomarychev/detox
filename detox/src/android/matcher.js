@@ -71,6 +71,14 @@ class VisibleMatcher extends Matcher {
   }
 }
 
+class VisibleMinPercentMatcher extends Matcher {
+  constructor(percentage) {
+    super();
+    this._call = invoke.callDirectly(DetoxMatcherApi.matcherForMinimumVisiblePercent(percentage));
+  }
+}
+
+
 class NotVisibleMatcher extends Matcher {
   constructor() {
     super();
@@ -123,6 +131,7 @@ module.exports = {
   IdMatcher,
   TypeMatcher,
   TraitsMatcher,
+  VisibleMinPercentMatcher,
   VisibleMatcher,
   NotVisibleMatcher,
   ExistsMatcher,

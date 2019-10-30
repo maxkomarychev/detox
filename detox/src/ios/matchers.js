@@ -80,6 +80,13 @@ class VisibleMatcher extends Matcher {
   }
 }
 
+class VisibleMinPercentMatcher extends Matcher {
+  constructor(percentage) {
+    super();
+    this._call = invoke.callDirectly(GreyMatchers.matcherForMinimumVisiblePercent(percentage));
+  }
+}
+
 class NotVisibleMatcher extends Matcher {
   constructor() {
     super();
@@ -122,6 +129,7 @@ module.exports = {
   TypeMatcher,
   TraitsMatcher,
   VisibleMatcher,
+  VisibleMinPercentMatcher,
   NotVisibleMatcher,
   ExistsMatcher,
   NotExistsMatcher,
